@@ -1,0 +1,10 @@
+{
+  "vindicators_slash_blade.configuration.title": "Vindicator's Slash Blade 配置",
+  "vindicators_slash_blade.configuration.section.vindicators_slash_blade.common.toml": "Vindicator's Slash Blade 配置",
+  "vindicators_slash_blade.configuration.section.vindicators_slash_blade.common.toml.title": "Vindicator's Slash Blade 配置",
+  "vindicators_slash_blade.configuration.bladerWhitelist": "拔刀剑使用者白名单（生物ID, 等级）",
+  "vindicators_slash_blade.configuration.bornWithBladeWhitelist": "生来带刀白名单",
+  "vindicators_slash_blade.configuration.bornWithBladeChance": "生来带刀概率",
+  "vindicators_slash_blade.configuration.bladeDropChance": "拔刀剑掉落概率",
+  "vindicators_slash_blade.configuration.showEnderParticles": "是否显示末影粒子"
+}

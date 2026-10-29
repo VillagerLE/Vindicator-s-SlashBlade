@@ -1,0 +1,10 @@
+{
+  "vindicators_slash_blade.configuration.title": "Vindicator's Slash Blade Configs",
+  "vindicators_slash_blade.configuration.section.vindicators_slash_blade.common.toml": "Vindicator's Slash Blade Configs",
+  "vindicators_slash_blade.configuration.section.vindicators_slash_blade.common.toml.title": "Vindicator's Slash Blade Configs",
+  "vindicators_slash_blade.configuration.bladerWhitelist": "Blader Whitelist (entity ID, level)",
+  "vindicators_slash_blade.configuration.bornWithBladeWhitelist": "Born With Blade Whitelist",
+  "vindicators_slash_blade.configuration.bornWithBladeChance": "Born With Blade Chance",
+  "vindicators_slash_blade.configuration.bladeDropChance": "Blade Drop Chance",
+  "vindicators_slash_blade.configuration.showEnderParticles": "Show Ender Particles"
+}

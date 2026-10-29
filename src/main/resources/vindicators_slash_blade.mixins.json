@@ -1,0 +1,16 @@
+{
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "mixins": [
+    "MixinItemSlashBlade",
+    "MixinMob"
+  ],
+  "package": "com.vindicators.slashblade.mixin",
+  "required": true,
+  "client": [
+    "MixinHumanoidModel",
+    "MixinIllagerModel",
+    "MixinVillagerModel",
+    "MixinLivingEntityRenderer"
+  ]
+}
