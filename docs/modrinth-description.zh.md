@@ -13,7 +13,7 @@
 配置文件里用白名单决定哪种生物会用拔刀剑战斗，以及它是几级：
 
 ```toml
-bladerWhitelist = ["minecraft:vindicator, 5", "minecraft:pillager, 2"]
+bladerWhitelist = ["minecraft:vindicator, 6", "minecraft:pillager, 2"]
 ```
 
 **对体验的影响：** 你不用被绑死在一种怪物上。可以把单只卫道士做成小 Boss，可以让整场掠夺战的掠夺者全部持刀，也可以把其他模组的生物加进来——不需要数据包，也不需要写代码。只要该生物有主手、走原版寻路 AI，就能被纳入。
@@ -88,7 +88,7 @@ bladeDropChance = 0.0
 
 ### 瞬步特效
 
-拔刀者使用瞬步时会产生末影粒子，整套瞬步系统（空中瞬步、下劈步、闪避步）在 5 级解锁。可用 `showEnderParticles` 关闭。
+整套瞬步系统（空中瞬步、下劈步、闪避步）在 4 级解锁，使用时还会拖出末影粒子。两者共用 `showEnderParticles` 一个开关（默认开启）——关掉它连瞬步本身也会一起禁用，想让战斗留在平地上就改这一行。
 
 **对体验的影响：** 位移技能变得可读。你能看见它闪出去换位，而不是觉得"这怪怎么像卡了瞬移 bug"。
 
@@ -104,8 +104,8 @@ bladeDropChance = 0.0
 | `bornWithBladeWhitelist` | 生物ID 列表 | `["minecraft:vindicator"]` | 哪些怪物生成时手里就有刀 |
 | `bornWithBladeChance` | 0.0 – 1.0 | `1.0` | 生来带刀的实际触发概率 |
 | `bladeDropChance` | 0.0 – 1.0 | `0.0` | 拔刀者死亡时掉落手中刀的概率 |
-| `showEnderParticles` | 布尔 | `true` | 瞬步时是否显示末影粒子 |
-| `usePlayerAnimator` | 布尔 | `true` | 是否通过 playerAnimator 播放刀剑动作动画（低配机器可关） |
+| `showEnderParticles` | 布尔 | `true` | 瞬步系统本身与末影粒子（关闭即彻底禁用瞬步） |
+| `usePlayerAnimator` | 布尔 | `true` | 是否把刀剑动作写入模型（低配机器可关，不影响战斗逻辑） |
 
 默认配置刻意做得极小：**只有卫道士**。这样开箱即用的手感和模组名一致，剩下的世界由你自己往上搭。
 
