@@ -12,14 +12,18 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.GoalSelector;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.mrqx.sbr_core.animation.VanillaConvertedVmdAnimation;
 import net.mrqx.sbr_core.entity.ISlashBladeEntity;
+import net.mrqx.sbr_core.entity.ai.goal.SimpleMirageBladeGoal;
 import net.mrqx.sbr_core.utils.JustSlashArtManager;
 import net.mrqx.sbr_core.utils.SlashBladeAttackUtils;
 import net.mrqx.sbr_core.utils.SlashBladeMovementUtils;
@@ -35,15 +39,26 @@ import java.util.List;
 import java.util.Set;
 
 @Mixin(Mob.class)
-public abstract class MixinMob implements ISlashBladeEntity {
+public abstract class MixinMob implements ISlashBladeEntity, RangedAttackMob {
 
     @Unique
     @Nullable
     private VanillaConvertedVmdAnimation vsb$currentAnimation;
 
     @Unique
+    @Nullable
+    private GoalSelector vsb$extraGoalSelector;
+
+    @Unique
+    private boolean vsb$mirageBladeInit = false;
+
+    @Unique
     private Mob vsb$self() {
         return (Mob) (Object) this;
+    }
+
+    @Override
+    public void performRangedAttack(LivingEntity target, float velocity) {
     }
 
     @Inject(method = "createMobAttributes", at = @At("RETURN"))
@@ -179,5 +194,23 @@ public abstract class MixinMob implements ISlashBladeEntity {
             SlashBladeMovementUtils.tickSlashBladeTrick(mob, target,
                     settings.canAirTrick(), settings.canTrickDown(), settings.canTrickDodge(), settings.powerful());
         }
+
+        if (!this.vsb$mirageBladeInit && settings.canUseMirageBlade()) {
+            this.vsb$mirageBladeInit = true;
+            this.vsb$initMirageBlade(mob);
+        }
+        if (this.vsb$extraGoalSelector != null) {
+            this.vsb$extraGoalSelector.tick();
+        }
+    }
+
+    @Unique
+    private void vsb$initMirageBlade(Mob mob) {
+        if (this.vsb$extraGoalSelector == null) {
+            this.vsb$extraGoalSelector = new GoalSelector(mob.level().getProfilerSupplier());
+        }
+        @SuppressWarnings({"rawtypes", "unchecked"})
+        SimpleMirageBladeGoal goal = new SimpleMirageBladeGoal((PathfinderMob) mob, 1.0D, true, true, false, false, false);
+        this.vsb$extraGoalSelector.addGoal(0, goal);
     }
 }

@@ -1,5 +1,6 @@
 package com.vindicators.slashblade.mixin;
 
+import com.vindicators.slashblade.Config;
 import dev.kosmx.playerAnim.api.TransformType;
 import dev.kosmx.playerAnim.core.util.MathHelper;
 import dev.kosmx.playerAnim.core.util.Vec3f;
@@ -53,6 +54,9 @@ public abstract class MixinHumanoidModel implements ISlashBladeEntityModel {
 
     @Inject(method = "setupAnim", at = @At("TAIL"))
     private void vsb$applyAnimation(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, CallbackInfo ci) {
+        if (!Config.USE_PLAYER_ANIMATOR.get()) {
+            return;
+        }
         if (entity instanceof ISlashBladeEntity slashBladeEntity) {
             VanillaConvertedVmdAnimation animation = slashBladeEntity.getCurrentAnimation();
             if (animation != null) {

@@ -3,7 +3,8 @@
   "minVersion": "0.8",
   "mixins": [
     "MixinItemSlashBlade",
-    "MixinMob"
+    "MixinMob",
+    "MixinSummonedSword"
   ],
   "package": "com.vindicators.slashblade.mixin",
   "required": true,

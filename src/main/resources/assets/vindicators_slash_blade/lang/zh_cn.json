@@ -6,5 +6,6 @@
   "vindicators_slash_blade.configuration.bornWithBladeWhitelist": "生来带刀白名单",
   "vindicators_slash_blade.configuration.bornWithBladeChance": "生来带刀概率",
   "vindicators_slash_blade.configuration.bladeDropChance": "拔刀剑掉落概率",
-  "vindicators_slash_blade.configuration.showEnderParticles": "是否显示末影粒子"
+  "vindicators_slash_blade.configuration.showEnderParticles": "是否显示末影粒子",
+  "vindicators_slash_blade.configuration.usePlayerAnimator": "是否调用 Player Animator（挥刀动作动画）"
 }

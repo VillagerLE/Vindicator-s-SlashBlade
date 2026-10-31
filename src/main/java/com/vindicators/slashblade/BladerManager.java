@@ -2,8 +2,12 @@ package com.vindicators.slashblade;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.player.Player;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -43,6 +47,19 @@ public final class BladerManager {
         return 1;
     }
 
+    public static boolean isFriendly(LivingEntity attacker, Entity entity) {
+        if (entity == attacker) {
+            return true;
+        }
+        if (attacker.isAlliedTo(entity)) {
+            return true;
+        }
+        if (entity instanceof Player && !(attacker instanceof Enemy || (attacker instanceof Mob mob && mob.getTarget() instanceof Player))) {
+            return true;
+        }
+        return false;
+    }
+
     private static Map<ResourceLocation, Integer> parseBladerEntries(java.util.List<? extends String> list) {
         Map<ResourceLocation, Integer> result = new HashMap<>();
         for (String entry : list) {
@@ -61,7 +78,7 @@ public final class BladerManager {
                     level = 1;
                 }
             }
-            if (level < 1 || level > 5) {
+            if (level < 1 || level > 6) {
                 level = 1;
             }
             result.put(id, level);

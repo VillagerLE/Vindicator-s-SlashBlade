@@ -1,6 +1,7 @@
 package com.vindicators.slashblade.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.vindicators.slashblade.Config;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
@@ -25,6 +26,9 @@ public abstract class MixinLivingEntityRenderer {
 
     @Inject(method = "render(Lnet/minecraft/world/entity/LivingEntity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At("HEAD"))
     private void vsb$preRender(LivingEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight, CallbackInfo ci) {
+        if (!Config.USE_PLAYER_ANIMATOR.get()) {
+            return;
+        }
         if (entity instanceof ISlashBladeEntity slashBladeEntity) {
             VanillaConvertedVmdAnimation animation = slashBladeEntity.getCurrentAnimation();
             if (animation != null) {

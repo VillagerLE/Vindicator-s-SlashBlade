@@ -18,21 +18,26 @@ bladerWhitelist = ["minecraft:vindicator, 5", "minecraft:pillager, 2"]
 
 **Effect on gameplay:** you are not locked into one enemy type. You can turn a single vindicator into a mini-boss, make an entire pillager raid blade-wielding, or add mobs from other mods — no datapack or code required. Any entity that has a main hand and a pathfinder AI can be enrolled.
 
-### Five blader levels
+### Six blader levels
 
-Every whitelist entry takes a level from 1 to 5. The level decides which techniques the mob is allowed to use and how fast it attacks:
+Every whitelist entry takes a level from 1 to 6. The level decides which techniques the mob is allowed to use and how fast it attacks:
 
-| Level | Attack cooldown | Rapid Slash | Upper Slash Jump | Slash Arts | Just Slash Arts | Void Slash | Air Trick / Trick Down / Trick Dodge | Powerful |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **1** | 7 ticks | – | – | – | – | – | – | – |
-| **2** | 6 ticks | – | – | – | – | – | – | ✔ |
-| **3** | 5 ticks | ✔ | ✔ | – | – | – | – | ✔ |
-| **4** | 4 ticks | ✔ | ✔ | ✔ | – | – | – | ✔ |
-| **5** | 3 ticks | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Level | Attack cooldown | Rapid Slash | Upper Slash Jump | Slash Arts | Just Slash Arts | Void Slash | Air Trick / Trick Down / Trick Dodge | Powerful | Mirage Blade |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **1** | 5 ticks | – | – | – | – | – | – | – | – |
+| **2** | 4 ticks | – | – | – | – | – | – | ✔ | – |
+| **3** | 3 ticks | ✔ | ✔ | – | – | – | – | ✔ | – |
+| **4** | 2 ticks | ✔ | ✔ | ✔ | – | ✔ | ✔ | ✔ | – |
+| **5** | 2 ticks | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | – |
+| **6** | 2 ticks | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
 
 `Powerful` makes the mob interrupt its own combo more easily and shortens its Just Slash cooldown, so it feels relentless rather than scripted.
 
-**Effect on gameplay:** difficulty is now a dial instead of a switch. A level 1 blader is a novelty; a level 5 blader is a genuine threat that chains aerial combos and vanishes with step tricks. You can put the same mob type at different levels in different structures by editing one line.
+**Effect on gameplay:** difficulty is now a dial instead of a switch. A level 1 blader is a novelty; a level 5 blader is a genuine threat that chains aerial combos and vanishes with step tricks, and a level 6 blader adds a ring of spinning blades and homing projectiles on top. You can put the same mob type at different levels in different structures by editing one line.
+
+### Mirage blade (level 6)
+
+Level 6 bladers unlock the summoned-sword system: **a spiral sword that rotates around them and homing blades that track their target**, giving them ranged pressure that runs in parallel with melee combos. Summoned swords respect friendly-fire protection too — they never trigger damage against the blader's own allies.
 
 ### Born with a blade
 
@@ -52,7 +57,8 @@ Area-of-effect slash attacks no longer shred the attacker's own side:
 
 - a blader never damages itself;
 - a blader never damages entities it is allied to (same team, same raid);
-- a blader never damages players **unless** it is a hostile mob or is already targeting a player.
+- a blader never damages players **unless** it is a hostile mob or is already targeting a player;
+- summoned swords (level 6) respect the same protection and never trigger damage against allies.
 
 **Effect on gameplay:** this is the feature that makes the mod playable rather than chaotic. Pillager raids keep their internal cohesion, villagers and iron golems can be given blades without wiping out the village they defend, and a patrolling ally will not clip you with a sweeping slash while you fight next to it.
 
@@ -99,6 +105,7 @@ All options live in `config/vindicators_slash_blade-common.toml` and are **serve
 | `bornWithBladeChance` | 0.0 – 1.0 | `1.0` | Chance that a born-with-blade mob actually gets one |
 | `bladeDropChance` | 0.0 – 1.0 | `0.0` | Chance a blader drops its blade on death |
 | `showEnderParticles` | boolean | `true` | Ender particles during step tricks |
+| `usePlayerAnimator` | boolean | `true` | Play blade animations via playerAnimator (disable for low-end machines) |
 
 Ships with a deliberately minimal default: **vindicators only**. That keeps the mod close to its name out of the box, and lets you build up from there.
 

@@ -6,5 +6,6 @@
   "vindicators_slash_blade.configuration.bornWithBladeWhitelist": "Born With Blade Whitelist",
   "vindicators_slash_blade.configuration.bornWithBladeChance": "Born With Blade Chance",
   "vindicators_slash_blade.configuration.bladeDropChance": "Blade Drop Chance",
-  "vindicators_slash_blade.configuration.showEnderParticles": "Show Ender Particles"
+  "vindicators_slash_blade.configuration.showEnderParticles": "Show Ender Particles",
+  "vindicators_slash_blade.configuration.usePlayerAnimator": "Use Player Animator"
 }

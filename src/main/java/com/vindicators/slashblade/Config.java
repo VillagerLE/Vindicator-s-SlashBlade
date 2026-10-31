@@ -10,9 +10,9 @@ public final class Config {
 
     public static final ModConfigSpec.ConfigValue<List<? extends String>> BLADER_WHITELIST = BUILDER
             .comment("Entities that can fight with a SlashBlade, with their level.",
-                    "Format per entry: \"<entity_id>, <level>\" (level 1-5).",
-                    "Example: [\"minecraft:vindicator, 5\", \"minecraft:pillager, 2\"]")
-            .defineListAllowEmpty("bladerWhitelist", List.of("minecraft:vindicator, 5"), () -> "", Config::validateEntry);
+                    "Format per entry: \"<entity_id>, <level>\" (level 1-6).",
+                    "Example: [\"minecraft:vindicator, 6\", \"minecraft:pillager, 2\"]")
+            .defineListAllowEmpty("bladerWhitelist", List.of("minecraft:vindicator, 6"), () -> "", Config::validateEntry);
 
     public static final ModConfigSpec.ConfigValue<List<? extends String>> BORN_WITH_BLADE_WHITELIST = BUILDER
             .comment("Entities that spawn holding a random SlashBlade.")
@@ -29,6 +29,10 @@ public final class Config {
     public static final ModConfigSpec.BooleanValue SHOW_ENDER_PARTICLES = BUILDER
             .comment("Whether bladers emit ender particles when using step tricks.")
             .define("showEnderParticles", true);
+
+    public static final ModConfigSpec.BooleanValue USE_PLAYER_ANIMATOR = BUILDER
+            .comment("Whether bladers play slash animations via Player Animator. Disable for lower-end machines.")
+            .define("usePlayerAnimator", true);
 
     static final ModConfigSpec SPEC = BUILDER.build();
 
